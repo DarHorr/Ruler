@@ -24,7 +24,7 @@
     },
     "require": {
         "php"            : ">=5.5.0",
-        "hoa/compiler"   : "~3.0",
+        "hoa/compiler"   : "dev-master",
         "hoa/consistency": "~1.0",
         "hoa/exception"  : "~1.0",
         "hoa/file"       : "~1.0",

@@ -26,7 +26,7 @@
         "php"            : ">=5.5.0",
         "hoa/compiler"   : "dev-master",
         "hoa/consistency": "~1.0",
-        "hoa/exception"  : "~1.0",
+        "hoa/exception"  : "dev-master",
         "hoa/file"       : "~1.0",
         "hoa/protocol"   : "dev-master",
         "hoa/visitor"    : "~2.0"

@@ -28,7 +28,7 @@
         "hoa/consistency": "~1.0",
         "hoa/exception"  : "~1.0",
         "hoa/file"       : "~1.0",
-        "hoa/protocol"   : "~1.0",
+        "hoa/protocol"   : "dev-master",
         "hoa/visitor"    : "~2.0"
     },
     "require-dev": {

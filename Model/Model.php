@@ -48,7 +48,7 @@ use Hoa\Visitor;
  * @copyright  Copyright © 2007-2017 Hoa community
  * @license    New BSD License
  */
-class Model implements Visitor\Element
+class Model implements Visitor\Element, \Stringable
 {
     /**
      * Root.
@@ -184,13 +184,13 @@ class Model implements Visitor\Element
      *
      * @return  string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (null === static::$_compiler) {
             static::$_compiler = new Ruler\Visitor\Compiler();
         }
 
-        return static::$_compiler->visit($this);
+        return (string) static::$_compiler->visit($this);
     }
 }
 

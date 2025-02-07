@@ -84,13 +84,6 @@ class Context extends Bag
     const METHOD_ACCESS    = 2;
 
     /**
-     * ID.
-     *
-     * @var string
-     */
-    protected $_id         = null;
-
-    /**
      * Index and object accesses.
      *
      * @var array
@@ -102,12 +95,13 @@ class Context extends Bag
     /**
      * Constructor.
      *
-     * @param   string  $id    ID.
+     * @param string $_id ID.
      */
-    public function __construct($id)
+    public function __construct(/**
+     * ID.
+     */
+    protected $_id)
     {
-        $this->_id = $id;
-
         return;
     }
 

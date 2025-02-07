@@ -119,9 +119,7 @@ class Context extends Test\Unit\Suite
         $this
             ->given(
                 $context        = new CUT(),
-                $context['foo'] = function () {
-                    return fakeCallable();
-                }
+                $context['foo'] = (fn() => fakeCallable())
             )
             ->when($result = $context['foo'])
             ->then
@@ -160,7 +158,7 @@ class Context extends Test\Unit\Suite
         $this
             ->given(
                 $context        = new CUT(),
-                $context['foo'] = [$this, 'fakeCallable']
+                $context['foo'] = $this->fakeCallable(...)
             )
             ->when($result = $context['foo'])
             ->then

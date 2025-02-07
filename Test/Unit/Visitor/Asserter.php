@@ -556,9 +556,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return ['x' => $x * 6];
-                    }
+                    fn($x) => ['x' => $x * 6]
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -579,9 +577,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return ['x' => ['y' => $x * 6]];
-                    }
+                    fn($x) => ['x' => ['y' => $x * 6]]
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -601,9 +597,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return new ArrayObject(['x' => $x * 6]);
-                    }
+                    fn($x) => new ArrayObject(['x' => $x * 6])
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -624,9 +618,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return new ArrayObject(['x' => new ArrayObject(['y' => $x * 6])]);
-                    }
+                    fn($x) => new ArrayObject(['x' => new ArrayObject(['y' => $x * 6])])
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -646,9 +638,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return ['x' => 42];
-                    }
+                    fn($x) => ['x' => 42]
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -672,9 +662,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return 42;
-                    }
+                    fn($x) => 42
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -698,9 +686,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return new ArrayObject(['x' => 42]);
-                    }
+                    fn($x) => new ArrayObject(['x' => 42])
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -724,9 +710,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return (object) ['x' => $x * 6];
-                    }
+                    fn($x) => (object) ['x' => $x * 6]
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -747,9 +731,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return (object) ['x' => (object) ['y' => $x * 6]];
-                    }
+                    fn($x) => (object) ['x' => (object) ['y' => $x * 6]]
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -769,9 +751,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return (object) ['x' => $x * 6];
-                    }
+                    fn($x) => (object) ['x' => $x * 6]
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -795,9 +775,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function ($x) {
-                        return $x * 6;
-                    }
+                    fn($x) => $x * 6
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -822,9 +800,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT($context),
                 $asserter->setOperator(
                     'c',
-                    function () {
-                        return new C();
-                    }
+                    fn() => new C()
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -845,9 +821,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function () {
-                        return new C();
-                    }
+                    fn() => new C()
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))
@@ -867,9 +841,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function () {
-                        return new C();
-                    }
+                    fn() => new C()
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -893,9 +865,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function () {
-                        return 42;
-                    }
+                    fn() => 42
                 )
             )
             ->exception(function () use ($asserter, $operator) {
@@ -921,9 +891,7 @@ class Asserter extends Test\Unit\Suite
                 $asserter = new SUT(),
                 $asserter->setOperator(
                     'c',
-                    function () {
-                        return ['x' => (object) ['y' => new C()]];
-                    }
+                    fn() => ['x' => (object) ['y' => new C()]]
                 )
             )
             ->when($result = $this->invoke($asserter)->visitOperator($operator))

@@ -48,10 +48,8 @@ class RulerArray extends Bag
 {
     /**
      * Array.
-     *
-     * @var array
      */
-    protected $_array = null;
+    protected array $_array;
 
 
 

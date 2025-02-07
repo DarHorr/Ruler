@@ -68,9 +68,7 @@ class Documentation extends Test\Integration\Suite implements Test\Decorrelated
                 $context['group']  = $this->sample(
                     $this->realdom->regex('/customer|guest/')
                 ),
-                $context['points'] = function () {
-                    return 42;
-                }
+                $context['points'] = (fn() => 42)
             )
             ->when($result = $ruler->assert($rule, $context))
             ->then
@@ -103,9 +101,7 @@ class Documentation extends Test\Integration\Suite implements Test\Decorrelated
                 }
             )
             ->when(
-                $ruler->getDefaultAsserter()->setOperator('logged', function ($user) {
-                    return $user->status;
-                }),
+                $ruler->getDefaultAsserter()->setOperator('logged', fn($user) => $user->status),
                 $result = $ruler->assert($rule, $context)
             )
             ->then

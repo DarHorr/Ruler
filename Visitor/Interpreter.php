@@ -188,42 +188,26 @@ class Interpreter implements Visitor\Visit
                 $token = $element->getValueToken();
                 $value = $element->getValueValue();
 
-                switch ($token) {
-                    case 'identifier':
-                        return
-                            true === $variable
-                                ? $this->_root->variable($value)
-                                : $value;
-
-                    case 'true':
-                        return true;
-
-                    case 'false':
-                        return false;
-
-                    case 'null':
-                        return null;
-
-                    case 'float':
-                        return floatval($value);
-
-                    case 'integer':
-                        return intval($value);
-
-                    case 'string':
-                        return str_replace(
-                            '\\' . $value[0],
-                            $value[0],
-                            substr($value, 1, -1)
-                        );
-
-                    default:
-                        throw new Ruler\Exception\Interpreter(
-                            'Token %s is unknown.',
-                            0,
-                            $token
-                        );
-                }
+                return match ($token) {
+                    'identifier' => true === $variable
+                        ? $this->_root->variable($value)
+                        : $value,
+                    'true' => true,
+                    'false' => false,
+                    'null' => null,
+                    'float' => floatval($value),
+                    'integer' => intval($value),
+                    'string' => str_replace(
+                        '\\' . $value[0],
+                        $value[0],
+                        substr($value, 1, -1)
+                    ),
+                    default => throw new Ruler\Exception\Interpreter(
+                        'Token %s is unknown.',
+                        0,
+                        $token
+                    ),
+                };
 
                 break;
 

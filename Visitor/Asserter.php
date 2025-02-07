@@ -78,19 +78,19 @@ class Asserter implements Visitor\Visit
             $this->setContext($context);
         }
 
-        $this->setOperator('and', function ($a = false, $b = false) { return $a && $b; });
-        $this->setOperator('or',  function ($a = false, $b = false) { return $a || $b; });
-        $this->setOperator('xor', function ($a, $b) { return (bool) ($a ^ $b); });
-        $this->setOperator('not', function ($a) { return !$a; });
-        $this->setOperator('=',   function ($a, $b) { return $a == $b; });
+        $this->setOperator('and', fn($a = false, $b = false) => $a && $b);
+        $this->setOperator('or',  fn($a = false, $b = false) => $a || $b);
+        $this->setOperator('xor', fn($a, $b) => (bool) ($a ^ $b));
+        $this->setOperator('not', fn($a) => !$a);
+        $this->setOperator('=',   fn($a, $b) => $a == $b);
         $this->setOperator('is',  $this->getOperator('='));
-        $this->setOperator('!=',  function ($a, $b) { return $a != $b; });
-        $this->setOperator('>',   function ($a, $b) { return $a >  $b; });
-        $this->setOperator('>=',  function ($a, $b) { return $a >= $b; });
-        $this->setOperator('<',   function ($a, $b) { return $a <  $b; });
-        $this->setOperator('<=',  function ($a, $b) { return $a <= $b; });
-        $this->setOperator('in',  function ($a, array $b) { return in_array($a, $b); });
-        $this->setOperator('sum', function () { return array_sum(func_get_args()); });
+        $this->setOperator('!=',  fn($a, $b) => $a != $b);
+        $this->setOperator('>',   fn($a, $b) => $a >  $b);
+        $this->setOperator('>=',  fn($a, $b) => $a >= $b);
+        $this->setOperator('<',   fn($a, $b) => $a <  $b);
+        $this->setOperator('<=',  fn($a, $b) => $a <= $b);
+        $this->setOperator('in',  fn($a, array $b) => in_array($a, $b));
+        $this->setOperator('sum', fn() => array_sum(func_get_args()));
         $this->setOperator('matches', function ($subject, $pattern) {
             $escapedPattern = preg_replace('/(?<!\\\)`/', '\`', $pattern);
 

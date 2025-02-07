@@ -47,23 +47,15 @@ namespace Hoa\Ruler\Model\Bag;
 class Scalar extends Bag
 {
     /**
-     * Value.
-     *
-     * @var scalar
-     */
-    protected $_value = null;
-
-
-
-    /**
      * Constructor.
      *
-     * @param   string  $value    Value.
+     * @param string $_value Value.
      */
-    public function __construct($value)
+    public function __construct(/**
+     * Value.
+     */
+    protected $_value)
     {
-        $this->_value = $value;
-
         return;
     }
 

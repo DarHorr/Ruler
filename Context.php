@@ -53,24 +53,15 @@ class Context implements \ArrayAccess
      */
     protected $_ruler = null;
 
-    /**
-     * Data.
-     *
-     * @var array
-     */
-    protected $_data  = [];
-
 
 
     /**
      * Constructor.
      *
-     * @param   array  $data    Initial data.
+     * @param array $_data Initial data.
      */
-    public function __construct(array $data = [])
+    public function __construct(protected array $_data = [])
     {
-        $this->_data = $data;
-
         return;
     }
 
